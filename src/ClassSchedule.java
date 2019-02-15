@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.util.*;
 import java.io.*;
 /**
@@ -49,6 +44,7 @@ public class ClassSchedule {
         }
         String order = "";
         double dist = 0.0;
+        Map<String, Double> orders = new TreeMap<String, Double>();
         
         for( int i = 1; i < 8; i++ ){
             for( int j = 1; j < 8; j++ ){
@@ -58,8 +54,10 @@ public class ClassSchedule {
                             for( int n = 1; n < 8; n++ ){
                                 for( int o = 1; o < 8; o++ ){
                                     if( i != j && i != k && i != l && i != m && i != n && i != o && j != k && j != l && j != m && j != n && j != o && k != l && k != m && k != n && k != o && l != m && l != n && l != o && m != n && m != o && n != o ){
-                                        //order = ( "" +  );
-                                        
+                                        order = ( "" + i + j + k + l + m + n + o );
+                                        dist = ( fr[i-1] + sc[j-1] + tr[k-1] + fo[l-1] + fi[m-1] + si[n-1] + se[o-1] );
+                                        orders.put( order, dist );
+                                        System.out.println( order + " " + dist );
                                     }
                                 }
                             }
@@ -68,8 +66,15 @@ public class ClassSchedule {
                 }
             }
         }
+        Iterator<Map.Entry<String, Double>> itr = orders.entrySet().iterator();
+        double big = Double.MIN_VALUE;
+        double small = Double.MIN_VALUE;
         
-        
+        while(itr.hasNext()) 
+        { 
+            Map.Entry<String, Double> entry = itr.next(); 
+            
+        } 
     }
     
     
